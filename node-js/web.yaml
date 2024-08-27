@@ -23,11 +23,11 @@ spec:
         - name: PORT
           valueFrom:
             configMapKeyRef:
-             name: devops-web-config
-             key: PORT
+              name: devops-web-config
+              key: PORT
         - name: API_HOST
           valueFrom:
             configMapKeyRef:
-             name: devops-web-config
-             key: API_HOST    
+              name: devops-web-config
+              key: API_HOST    
       

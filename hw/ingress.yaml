@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: myapp.alex.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-app-v1-service
+                port:
+                  number: 80
+          - path: /kaizen
+            pathType: Prefix
+            backend:
+              service:
+                name: echoserver-v1-service
+                port:
+                  number: 80
+    - host: anotherapp.alex.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-app-v2-service
+                port:
+                  number: 80
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: echoserver-v2-service
+                port:
+                  number: 80
